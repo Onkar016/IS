@@ -1,0 +1,18 @@
+# Install: pip install pyDes
+from pyDes import des, ECB, PAD_PKCS5
+import binascii
+
+# Key must be 8 bytes
+key = b"DESCRYPT"
+data = "Hello, DES Algorithm!"
+
+# Create DES cipher
+cipher = des(key, ECB, padmode=PAD_PKCS5)
+
+# Encrypt data
+encrypted = cipher.encrypt(data)
+print("Encrypted:", binascii.hexlify(encrypted))
+
+# Decrypt data
+decrypted = cipher.decrypt(encrypted)
+print("Decrypted:", decrypted.decode())
